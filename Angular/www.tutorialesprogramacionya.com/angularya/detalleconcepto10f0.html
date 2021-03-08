@@ -1,0 +1,464 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=65&codigo=65&inicio=60 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Mar 2021 23:38:40 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4669394804436935",
+    enable_page_level_ads: true
+  });
+</script>
+
+<title>Angular e instalación de Bootstrap original</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">    
+<meta name="keywords" content="Angular, programación, tutorial">
+<meta name="description" content="El objetivo de este tutorial 
+es presentar los conceptos básicos del framework Angular">
+<meta name="author" content="Diego Moisset">
+
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="estilos.css">
+
+<style>
+html,body {
+	background-color: #D3E9D0;
+	font-family: sans-serif,arial;
+
+}
+</style>
+
+<style>
+.uno { width: 320px; height: 100px; }
+@media(min-width: 500px) { .uno { width: 320px; height: 100px; } }
+@media(min-width: 800px) { .uno { width: 336px; height: 280px; } }
+
+.dos { width: 320px; height: 100px; }
+@media(min-width: 500px) { .dos { width: 320px; height: 100px; } }
+@media(min-width: 800px) { .dos { width: 336px; height: 280px; } }
+</style>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80268657-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+<div class="row">
+  <div class="col-md-12">
+
+<div class="titulodetalle">
+<h1>65 - Angular e instalación de Bootstrap original</h1></div>
+
+  </div>
+</div>  
+
+
+<div class="row">
+  <div class="col-md-12">
+
+<div class="cuerpodetalle">
+<div style="display:block;float:left;margin: 5px;"> 
+ <script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- adaptable1 -->
+<ins class="adsbygoogle uno"
+     style="display:inline-block"
+     data-ad-client="ca-pub-4669394804436935"
+     data-ad-slot="4716538363"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+</div> 
+
+
+<p>Bootstrap es un framework de CSS que nos facilita y estandariza el desarrollo de sitios web.</p>
+<p>Veremos que hay varias maneras de utilizar el framework original de Bootstrap y en conceptos futuros veremos como instalar versiones de Bootstrap adaptadas directamente al ambiente de Angular.</p>
+<p>Si todavía no ha trabajado con Bootstrap puede visitar el curso de <a href="https://www.tutorialesprogramacionya.com/bootstrap4ya" target="_blank">Bootstrap 4 Ya</a>. </li>
+<h3>Distintas formas de instalar Bootstrap original.</h3>
+<p>Crearemos un proyecto nuevo para probar las distintas maneras de acceder a Bootstrap desde Angular:</p>
+<pre>
+ng new proyecto038
+</pre>
+<ol>
+<li><p>La forma más sencilla es utilizar un CDN donde se encuentre localizado los archivos *.css y *.js del framework de Bootstrap y sus dependencias (JQuery y Popper).</p>
+<p>Debemos modificar el archivo 'index.html' disponiendo los enlaces a los archivos respectivos y con eso ya tenemos acceso al framework de Bootstrap en todo el proyecto:</p>
+<pre class="recuadro">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Proyecto038&lt;/title&gt;
+  &lt;base href="/"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+<strong>  &lt;link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"&gt;  </strong>
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;app-root&gt;&lt;/app-root&gt;
+<strong>  &lt;script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"&gt;&lt;/script&gt;
+  &lt;script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"&gt;&lt;/script&gt;  </strong>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Modifiquemos la componente que se ha creado por defecto y hagamos uso de las clases definidas en la librería de Bootstrap:</p>
+<pre class="recuadro">
+&lt;div class="container"&gt;
+  &lt;div class="jumbotron"&gt;
+    &lt;h1&gt;Angular con Bootstrap&lt;/h1&gt;
+    &lt;p&gt;Bootstrap 4 es un framework de CSS que nos facilita y estandariza el desarrollo de sitios web.&lt;br&gt;
+      Se ha implementado pensando que se adapte tanto a las pantallas de equipos de
+      escritorio como a móviles y tablets.&lt;/p&gt;
+    &lt;p&gt;Bootstrap 4 ha sido desarrollada y es mantenida por la empresa Twitter y la ha liberado como un producto Open
+      Source.&lt;/p&gt;
+
+    &lt;button type="button" class="btn btn-primary" data-toggle="modal" data-target="#dialogo1"&gt;Información&lt;/button&gt;
+
+    &lt;div class="modal fade" id="dialogo1"&gt;
+      &lt;div class="modal-dialog"&gt;
+        &lt;div class="modal-content"&gt;
+          &lt;div class="modal-header"&gt;
+            &lt;h4 class="modal-title"&gt;Información&lt;/h4&gt;
+            &lt;button type="button" class="close" data-dismiss="modal"&gt;X&lt;/button&gt;
+          &lt;/div&gt;
+          &lt;!-- cuerpo del diálogo --&gt;
+          &lt;div class="modal-body"&gt;
+            &lt;a href="https://getbootstrap.com/"&gt;Ingresar al sitio oficial&lt;/a&gt;&lt;br&gt;
+            &lt;a href="https://tutorialesprogramacionya.com/bootstrap4ya"&gt;Tutorial de Bootstrap&lt;/a&gt;
+          &lt;/div&gt;
+          &lt;!-- pie del diálogo --&gt;
+          &lt;div class="modal-footer"&gt;
+            &lt;button type="button" class="btn btn-secondary" data-dismiss="modal"&gt;Cerrar&lt;/button&gt;
+          &lt;/div&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+</pre>
+<p>Si ejecutamos la aplicación podemos ver que tenemos disponible la librería *.css de Bootstrap como también acceso a las funcionalidades de Javascript de: JQuery, popper y Bootstrap en si mismo (de todos los elementos de Bootstrap que requieren Javascript):</p>
+<img src="imagentema/foto121.jpg" alt="Angular y Bootstrap con CDN" border="0"><br>
+
+</li>
+
+
+<li>
+<p>Si queremos tener los archivos de Bootstrap, JQuery y Popper en nuestro servidor y no en un CDN tenemos como primer alternativa descargarlos y copiar los archivos a la carpeta 'assets', luego tenemos los archivos en forma local:</p>
+<img src="imagentema/foto122.jpg" alt="Angular y Bootstrap en la carpeta assets" border="0"><br>
+<p>Solo nos falta cambiar las url en el archivo 'index.html':</p>
+<pre class="recuadro">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Proyecto038&lt;/title&gt;
+  &lt;base href="/"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+<strong>  &lt;link rel="stylesheet" href="assets/css/bootstrap.min.css"&gt;  </strong>
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;app-root&gt;&lt;/app-root&gt;
+<strong>  &lt;script src="assets/js/jquery-3.4.1.slim.min.js"&gt;&lt;/script&gt;
+  &lt;script src="assets/js/popper.min.js"&gt;&lt;/script&gt;
+  &lt;script src="assets/js/bootstrap.min.js"&gt;&lt;/script&gt;  </strong>
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+<p>Ya podemos ejecutar y tener el mismo resultado:</p>
+<img src="imagentema/foto121.jpg" alt="Angular y Bootstrap con los archvios en la carpeta assets" border="0"><br>
+</li>
+
+
+<li>
+<p>La tercer forma de instalar Bootstrap es empleando el gestor de paquetes de Node.Js</p>
+<p>Desde la línea de comandos, en la carpeta raiz de nuestro proyecto procedemos a instalar los tres paquetes:</p>
+<pre>
+npm install bootstrap --save
+npm install jquery --save
+npm install  @popperjs/core --save
+</pre>
+<p>La opción --save hace que npm incluya el paquete dentro de la sección de dependencies del archivo package.json en forma automática, lo que evita que tengamos que escribirlo en forma manual.</p>
+
+<p>Si abrimos el archivo 'package.json' podemos ver que se han añadido las tres dependencias en nuestro proyecto:</p>
+<pre>
+{
+  "name": "proyecto038",
+  "version": "0.0.0",
+  "scripts": {
+    "ng": "ng",
+    "start": "ng serve",
+    "build": "ng build",
+    "test": "ng test",
+    "lint": "ng lint",
+    "e2e": "ng e2e"
+  },
+  "private": true,
+  "dependencies": {
+    "@angular/animations": "~9.0.0",
+    "@angular/common": "~9.0.0",
+    "@angular/compiler": "~9.0.0",
+    "@angular/core": "~9.0.0",
+    "@angular/forms": "~9.0.0",
+    "@angular/platform-browser": "~9.0.0",
+    "@angular/platform-browser-dynamic": "~9.0.0",
+    "@angular/router": "~9.0.0",
+<strong>    "@popperjs/core": "^2.0.6",
+    "bootstrap": "^4.4.1",
+    "jquery": "^3.4.1",</strong>
+    "rxjs": "~6.5.4",
+    "tslib": "^1.10.0",
+    "zone.js": "~0.10.2"
+  },
+  "devDependencies": {
+    "@angular-devkit/build-angular": "~0.900.1",
+    "@angular/cli": "~9.0.1",
+    "@angular/compiler-cli": "~9.0.0",
+    "@angular/language-service": "~9.0.0",
+    "@types/node": "^12.11.1",
+    "@types/jasmine": "~3.5.0",
+    "@types/jasminewd2": "~2.0.3",
+    "codelyzer": "^5.1.2",
+    "jasmine-core": "~3.5.0",
+    "jasmine-spec-reporter": "~4.2.1",
+    "karma": "~4.3.0",
+    "karma-chrome-launcher": "~3.1.0",
+    "karma-coverage-istanbul-reporter": "~2.1.0",
+    "karma-jasmine": "~2.0.1",
+    "karma-jasmine-html-reporter": "^1.4.2",
+    "protractor": "~5.4.3",
+    "ts-node": "~8.3.0",
+    "tslint": "~5.18.0",
+    "typescript": "~3.7.5"
+  }
+}
+</pre>
+<p>Como último paso para poder utilizar Bootstrap en nuestro proyecto, debemos modificar el archivo 'angular.json' donde debemos especificar el path de los 4 archivos (en la propiedad 'build', en 'styles' indicamos el path donde se encuenta el archivo *.css y en 'script' los tres archivos respectivos, es importante el orden en que se importan los archivos Javascript):</p>
+<pre>
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "proyecto038": {
+      "projectType": "application",
+      "schematics": {},
+      "root": "",
+      "sourceRoot": "src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/proyecto038",
+            "index": "src/index.html",
+            "main": "src/main.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+<strong style="font-size:1.2em">            "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",              
+              "src/styles.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/@popperjs/core/dist/umd/popper.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
+            ]</strong>
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "src/environments/environment.ts",
+                  "with": "src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "proyecto038:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "proyecto038:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "proyecto038:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "src/test.ts",
+            "polyfills": "src/polyfills.ts",
+            "tsConfig": "tsconfig.spec.json",
+            "karmaConfig": "karma.conf.js",
+            "assets": [
+              "src/favicon.ico",
+              "src/assets"
+            ],
+            "styles": [
+              "src/styles.css"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "tsconfig.app.json",
+              "tsconfig.spec.json",
+              "e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "e2e/protractor.conf.js",
+            "devServerTarget": "proyecto038:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "proyecto038:serve:production"
+            }
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "proyecto038",
+  "cli": {
+    "analytics": false
+  }
+}
+</pre>
+<p>Con este método no debemos modificar nada el archivo 'index.html':</p>
+<pre class="recuadro">
+&lt;!doctype html&gt;
+&lt;html lang="en"&gt;
+&lt;head&gt;
+  &lt;meta charset="utf-8"&gt;
+  &lt;title&gt;Proyecto038&lt;/title&gt;
+  &lt;base href="/"&gt;
+  &lt;meta name="viewport" content="width=device-width, initial-scale=1"&gt;
+  &lt;link rel="icon" type="image/x-icon" href="favicon.ico"&gt;
+&lt;/head&gt;
+&lt;body&gt;
+  &lt;app-root&gt;&lt;/app-root&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre>
+</li>
+</ol>
+
+<p>Hemos presentado en este concepto las tres formas de integrar el Bootstrap original dentro de un proyecto Angular, el empleo de uno u otro depende de nuestra decisión. Veremos en los próximos conceptos algunos ejercicios empleando Angular y Bootstrap original.</p>
+
+<div class="botonretorno"><a href="indexd6cc.html?inicio=60">Retornar</a></div> 
+
+<div>
+<!--publi-->
+<script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- adaptable2 -->
+<ins class="adsbygoogle dos"
+     style="display:inline-block"
+     data-ad-client="ca-pub-4669394804436935"
+     data-ad-slot="5774469161"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!--publi-->
+<script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- adaptable2 -->
+<ins class="adsbygoogle dos"
+     style="display:inline-block"
+     data-ad-client="ca-pub-4669394804436935"
+     data-ad-slot="5774469161"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+
+
+
+</div>
+
+  </div>
+</div>  
+
+</div>
+
+<script type="text/javascript">
+function cambiar()
+{
+  var lista=document.getElementsByTagName('pre');
+  for(f=0;f<lista.length;f++)
+  {
+   lista[f].style.display='block';
+  }
+  document.getElementById('solucion').style.display='none';
+}
+
+</script>
+
+</body>
+
+
+<!-- Mirrored from www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=65&codigo=65&inicio=60 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Mar 2021 23:38:40 GMT -->
+</html>

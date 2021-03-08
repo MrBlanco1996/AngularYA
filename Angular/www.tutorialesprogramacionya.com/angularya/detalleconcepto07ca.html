@@ -1,0 +1,315 @@
+
+<!DOCTYPE html>
+<html>
+
+
+<!-- Mirrored from www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=15&codigo=15&inicio=0 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Mar 2021 23:37:37 GMT -->
+<!-- Added by HTTrack --><meta http-equiv="content-type" content="text/html;charset=UTF-8" /><!-- /Added by HTTrack -->
+<head>
+<script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<script>
+  (adsbygoogle = window.adsbygoogle || []).push({
+    google_ad_client: "ca-pub-4669394804436935",
+    enable_page_level_ads: true
+  });
+</script>
+
+<title>Petición de un archivo JSON a un servidor</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">    
+<meta name="keywords" content="Angular, programación, tutorial">
+<meta name="description" content="El objetivo de este tutorial 
+es presentar los conceptos básicos del framework Angular">
+<meta name="author" content="Diego Moisset">
+
+
+<link href="../css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" type="text/css" href="estilos.css">
+
+<style>
+html,body {
+	background-color: #D3E9D0;
+	font-family: sans-serif,arial;
+
+}
+</style>
+
+<style>
+.uno { width: 320px; height: 100px; }
+@media(min-width: 500px) { .uno { width: 320px; height: 100px; } }
+@media(min-width: 800px) { .uno { width: 336px; height: 280px; } }
+
+.dos { width: 320px; height: 100px; }
+@media(min-width: 500px) { .dos { width: 320px; height: 100px; } }
+@media(min-width: 800px) { .dos { width: 336px; height: 280px; } }
+</style>
+
+<script>
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','../../www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80268657-1', 'auto');
+  ga('send', 'pageview');
+
+</script>
+
+</head>
+
+<body>
+
+
+<div class="container">
+
+<div class="row">
+  <div class="col-md-12">
+
+<div class="titulodetalle">
+<h1>15 - Petición de un archivo JSON a un servidor</h1></div>
+
+  </div>
+</div>  
+
+
+<div class="row">
+  <div class="col-md-12">
+
+<div class="cuerpodetalle">
+<div style="display:block;float:left;margin: 5px;"> 
+ <script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- adaptable1 -->
+<ins class="adsbygoogle uno"
+     style="display:inline-block"
+     data-ad-client="ca-pub-4669394804436935"
+     data-ad-slot="4716538363"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script> 
+</div> 
+
+
+<p>Cuando tenemos que hacer peticiones de archivos JSON a un servidor en Angular disponemos de una clase llamada 'HttpClient' que nos facilita ésta actividad.</p>
+<p>Para hacer uso de la clase 'HttpClient' debemos importar el módulo 'HttpClientModule'.</p>
+<h3>Problema</h3>
+<p>Confeccionar una aplicación que recupere una respuesta en JSON de la dirección:</p>
+<pre>
+http://scratchya.com.ar/vue/datos.php
+</pre>
+<p>La estructura del archivo JSON es:</p>
+<pre>
+[
+  {
+    "codigo": 1,
+    "descripcion": "papas",
+    "precio": 12.33
+  },
+  {
+    "codigo": 2,
+    "descripcion": "manzanas",
+    "precio": 54
+  }
+]
+</pre>
+<p>Mostrar en una tabla HTML todos los artículos recuperados.</p>
+
+
+
+
+<ol>
+<li>
+<p>Desde la línea de comandos de Node.js procedemos a crear el proyecto010:</p>
+<pre>
+f:\angularya&gt; ng new proyecto010
+</pre>
+</li>
+
+<li>
+<p>Como primer paso importaremos el módulo HttpClientModule en el archivo app.module.ts:</p>
+
+<pre class="recuadro">
+import { BrowserModule } from '@angular/platform-browser';
+import { NgModule } from '@angular/core';
+import { AppComponent } from './app.component';
+
+<strong>import {HttpClientModule} from '@angular/common/http';</strong>
+
+
+@NgModule({
+  declarations: [
+    AppComponent
+  ],
+  imports: [
+    BrowserModule,
+<strong>    HttpClientModule</strong>
+  ],
+  providers: [],
+  bootstrap: [AppComponent]
+})
+export class AppModule { }
+</pre>
+
+</li>
+<li>
+<p>Implementaremos toda la lógica de lectura de datos en la componente por defecto que ha creado Angular CLI, luego en conceptos futuros veremos como distribuir las responsabilidades entre distintas clases.</p>
+
+<pre class="recuadro">
+import { Component } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+
+@Component({
+  selector: 'app-root',
+  templateUrl: './app.component.html',
+  styleUrls: ['./app.component.css']
+})
+export class AppComponent {
+  articulos = null;
+
+  constructor(private http: HttpClient) { }
+
+  ngOnInit() {
+    this.http.get("http://scratchya.com.ar/vue/datos.php")
+      .subscribe(
+        result =&gt; {
+          this.articulos = result;
+        },
+        error =&gt; {
+          console.log('problemas');
+        }
+      );
+  }
+
+}
+</pre>
+<p>Importamos la clase HttpClient:</p>
+<pre>
+import { HttpClient } from '@angular/common/http';
+</pre>
+<p>Definimos un atributo llamado articulos con valor inicial null:</p>
+<pre>
+  articulos = null;
+</pre>
+<p>En Angular podemos definir una propiedad en los parámetros del constructor que se inyecta cuando se crea la componente:</p>
+<pre>
+  constructor(private http: HttpClient) { }
+</pre>
+<p>Luego la propiedad http que es de la clase HttpClient nos servirá para hacer la petición al servidor.</p>
+<p>En el método onInit que se ejecuta una vez que el template de la componente está creado procedemos a recuperar del servidor los datos llamando al método get de la propiedad http:</p>
+<pre>
+    this.http.get("http://scratchya.com.ar/vue/datos.php")
+      .subscribe(
+        result =&gt; {
+          this.articulos = result;
+        },
+        error =&gt; {
+          console.log('problemas');
+        }
+      );
+</pre>
+<p>A partir del objeto que retorna el método get llamamos al método subscribe y le pasamos dos funciones. La primera de esas funciones recibe como parámetro los datos recuperados del servidor.</p>
+</li>
+
+<li>
+<p>Falta que veamos como en la vista procedemos a mostrar los datos recuperados 'app.component.html':</p>
+<pre class="recuadro">
+&lt;div *ngIf="articulos!=null; else espera"&gt;
+  &lt;table border="1"&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Codigo&lt;/td&gt;&lt;td&gt;Descripcion&lt;/td&gt;&lt;td&gt;Precio&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr *ngFor="let art of articulos"&gt;
+      &lt;td&gt;{{art.codigo}}&lt;/td&gt;
+      &lt;td&gt;{{art.descripcion}}&lt;/td&gt;
+      &lt;td&gt;{{art.precio}}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+&lt;/div&gt;
+&lt;ng-template #espera&gt;Esperando datos...&lt;/ng-template&gt;
+</pre>
+<p>Como las peticiones JSON a un servidor pueden demorarse un tiempo mediante la directiva *ngIf verificamos si la variable articulos tiene un null procedemos a mostrar el contenido de la etiqueta 'ng-template':</p>
+<pre>
+&lt;div *ngIf="articulos!=null; else espera"&gt;
+</pre>
+<p>Para mostrar los datos de la propiedad 'articulos' lo hacemos como lo hemos visto anteriormente:</p>
+<pre>
+  &lt;table border="1"&gt;
+    &lt;tr&gt;
+      &lt;td&gt;Codigo&lt;/td&gt;&lt;td&gt;Descripcion&lt;/td&gt;&lt;td&gt;Precio&lt;/td&gt;
+    &lt;/tr&gt;
+    &lt;tr *ngFor="let art of articulos"&gt;
+      &lt;td&gt;{{art.codigo}}&lt;/td&gt;
+      &lt;td&gt;{{art.descripcion}}&lt;/td&gt;
+      &lt;td&gt;{{art.precio}}&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/table&gt;
+</pre>
+</li>
+
+<li>
+<p>Si ejecutamos ahora el proyecto010:</p>
+<pre>
+ng server -o
+</pre>
+<img src="imagentema/foto036.jpg" border="0" alt="peticion JSON a un servidor"><br>
+</li>
+
+</ol>
+
+
+
+
+<div class="botonretorno"><a href="index2904.html?inicio=0">Retornar</a></div> 
+
+<div>
+<!--publi-->
+<script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- adaptable2 -->
+<ins class="adsbygoogle dos"
+     style="display:inline-block"
+     data-ad-client="ca-pub-4669394804436935"
+     data-ad-slot="5774469161"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+<!--publi-->
+<script async src="../../pagead2.googlesyndication.com/pagead/js/f.txt"></script>
+<!-- adaptable2 -->
+<ins class="adsbygoogle dos"
+     style="display:inline-block"
+     data-ad-client="ca-pub-4669394804436935"
+     data-ad-slot="5774469161"></ins>
+<script>
+(adsbygoogle = window.adsbygoogle || []).push({});
+</script>
+
+</div>
+
+
+
+
+</div>
+
+  </div>
+</div>  
+
+</div>
+
+<script type="text/javascript">
+function cambiar()
+{
+  var lista=document.getElementsByTagName('pre');
+  for(f=0;f<lista.length;f++)
+  {
+   lista[f].style.display='block';
+  }
+  document.getElementById('solucion').style.display='none';
+}
+
+</script>
+
+</body>
+
+
+<!-- Mirrored from www.tutorialesprogramacionya.com/angularya/detalleconcepto.php?punto=15&codigo=15&inicio=0 by HTTrack Website Copier/3.x [XR&CO'2014], Sun, 07 Mar 2021 23:37:37 GMT -->
+</html>
